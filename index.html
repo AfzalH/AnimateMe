@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AnimateMe.css</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, minimal-ui" />
+
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//code.jquery.com" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,400italic,700italic,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="animateme.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="site__header island">
+  <div class="wrap">
+   <span id="animationSandbox" style="display: block;"><h1 class="site__title mega">AnimateMe.css</h1></span>
+    <span class="beta subhead">Just-add-water CSS animations</span>
+  </div>
+</header><!-- /.site__header -->
+
+<main class="site__content island" role="content">
+  <div class="wrap">
+    <form>
+      <select class="input input--dropdown js--animations">
+        <optgroup label="Attention Seekers">
+          <option value="bounce">bounce</option>
+          <option value="shake">shake</option>
+          <option value="swing">swing</option>
+        </optgroup>
+
+        <optgroup label="Fading Entrances">
+          <option value="fadeIn">fadeIn</option>
+          <option value="fadeInDown">fadeInDown</option>
+          <option value="fadeInLeft">fadeInLeft</option>
+          <option value="fadeInRight">fadeInRight</option>
+          <option value="fadeInUp">fadeInUp</option>
+        </optgroup>
+
+        <optgroup label="Fading Exits">
+          <option value="fadeOut">fadeOut</option>
+          <option value="fadeOutDown">fadeOutDown</option>
+          <option value="fadeOutLeft">fadeOutLeft</option>
+          <option value="fadeOutRight">fadeOutRight</option>
+          <option value="fadeOutUp">fadeOutUp</option>
+        </optgroup>
+
+        <optgroup label="Flippers">
+          <option value="flipInX">flipInX</option>
+          <option value="flipInY">flipInY</option>
+          <option value="flipOutX">flipOutX</option>
+        </optgroup>
+
+        <optgroup label="Rotating Entrances">
+          <option value="rotateInDownLeft">rotateInDownLeft</option>
+          <option value="rotateInDownRight">rotateInDownRight</option>
+          <option value="rotateInUpLeft">rotateInUpLeft</option>
+        </optgroup>
+
+        <optgroup label="Zoom Entrances">
+          <option value="zoomIn">zoomIn</option>
+        </optgroup>
+        
+        <optgroup label="Zoom Exits">
+          <option value="zoomOut">zoomOut</option>
+          <option value="zoomOutDown">zoomOutDown</option>
+          <option value="zoomOutRight">zoomOutRight</option>
+        </optgroup>
+      </select>
+
+      <button class="butt js--triggerAnimation">Animate it</button>
+    </form>
+    <hr />
+    <p><small>Modified By <a href="http://www.srizon.com">Afzal Hossain</a>.</small></p>
+  </div>
+</main><!-- /.site__content -->
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+  function testAnim(x) {
+    $('#animationSandbox').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(this).removeClass();
+    });
+  };
+
+  $(document).ready(function(){
+    $('.js--triggerAnimation').click(function(e){
+      e.preventDefault();
+      var anim = $('.js--animations').val();
+      testAnim(anim);
+    });
+
+    $('.js--animations').change(function(){
+      var anim = $(this).val();
+      testAnim(anim);
+    });
+  });
+
+</script>
+
+</body>
+</html>
